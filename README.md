@@ -1,7 +1,10 @@
-[![Build Status](https://travis-ci.org/wodby/syslog.svg?branch=master)](https://travis-ci.org/wodby/syslog)
-[![Docker Pulls](https://img.shields.io/docker/pulls/wodby/syslog.svg)](https://hub.docker.com/r/wodby/syslog)
-[![Docker Stars](https://img.shields.io/docker/stars/wodby/syslog.svg)](https://hub.docker.com/r/wodby/syslog)
+# Rsyslog docker container images
 
-# Supported tags and respective `Dockerfile` links
+[![Build Status](https://travis-ci.org/wodby/rsyslog.svg?branch=master)](https://travis-ci.org/wodby/rsyslog)
+[![Docker Pulls](https://img.shields.io/docker/pulls/wodby/rsyslog.svg)](https://hub.docker.com/r/wodby/rsyslog)
+[![Docker Stars](https://img.shields.io/docker/stars/wodby/rsyslog.svg)](https://hub.docker.com/r/wodby/rsyslog)
+[![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
--       [`latest` (*Dockerfile*)](https://github.com/wodby/syslog/tree/master/Dockerfile)
+## Supported tags and respective `Dockerfile` links:
+
+- [`latest` (*Dockerfile*)](https://github.com/wodby/rsyslog/tree/master/Dockerfile)
