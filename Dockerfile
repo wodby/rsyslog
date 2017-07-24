@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-RUN apk add --no-cache bach rsyslog
+RUN apk add --no-cache bash rsyslog
 
 EXPOSE 514
 
