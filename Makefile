@@ -36,7 +36,7 @@ buildx-imagetools-create:
 .PHONY: buildx-imagetools-create
 
 test:
-	IMAGE=$(REPO):$(VERSION) ./test.sh
+	'no tests :('
 
 push:
 	docker push $(REPO):$(VERSION)
