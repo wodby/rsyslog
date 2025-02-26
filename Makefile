@@ -5,12 +5,35 @@ VERSION ?= latest
 REPO = wodby/rsyslog
 NAME = rsyslog
 
-.PHONY: build test push shell run start stop logs clean release
+TAG ?= $(VERSION)
+
+PLATFORM ?= linux/arm64
+
+ifneq ($(ARCH),)
+	override TAG := $(TAG)-$(ARCH)
+endif
+
+.PHONY: build buildx-build buildx-push buildx-imagetools-create test push shell run start stop logs clean release
 
 default: build
 
 build:
 	docker build -t $(REPO):$(VERSION) ./
+
+buildx-build:
+	docker buildx build --platform $(PLATFORM) -t $(REPO):$(TAG) \
+		--load \
+		./
+
+buildx-push:
+	docker buildx build --platform $(PLATFORM) --push -t $(REPO):$(TAG) \
+		./
+
+buildx-imagetools-create:
+	docker buildx imagetools create -t $(REPO):$(TAG) \
+				$(REPO):$(VERSION)-amd64 \
+				$(REPO):$(VERSION)-arm64
+.PHONY: buildx-imagetools-create
 
 test:
 	IMAGE=$(REPO):$(VERSION) ./test.sh

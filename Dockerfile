@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.21
 
 RUN apk add --no-cache bash rsyslog
 
