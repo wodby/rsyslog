@@ -6,7 +6,13 @@ if [[ -n "${DEBUG}" ]]; then
   set -x
 fi
 
-# Remove possible old pid file.
-rm -f /var/run/rsyslogd.pid
+_gotpl() {
+    if [[ -f "/etc/gotpl/$1" ]]; then
+        gotpl "/etc/gotpl/$1" > "$2"
+    fi
+}
+
+_gotpl "frps.toml.tmpl" "/etc/frps.toml"
+_gotpl "frpc.toml.tmpl" "/etc/frpc.toml"
 
 exec "$@"

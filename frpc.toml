@@ -1,0 +1,16 @@
+serverAddr = "hub.chingis.wodby.dev"
+serverPort = 31224
+
+auth.method = "oidc"
+auth.oidc.clientID = "test_client"
+auth.oidc.clientSecret = "test_secret"
+auth.oidc.audience = "frp"
+auth.oidc.tokenEndpointURL = "https://api.chingis.wodby.dev/v1/openid/token"
+
+[[proxies]]
+name = "frpc"
+type = "http"
+localIP = "127.0.0.1"
+localPort = 3000
+customDomains = ["hub.chingis.wodby.dev"]
+

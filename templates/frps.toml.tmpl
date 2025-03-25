@@ -1,6 +1,8 @@
 bindPort = 7000
 vhostHTTPPort = 8080
 
-auth.method = "oidc"
+auth.method = "{{ getenv "FRPS_AUTH_METHOD" "token" }}"
+{{- if eq (getenv "FRPS_AUTH_METHOD") "oidc" }}
 auth.oidc.issuer = "{{ getenv "FRPS_AUTH_OIDC_ISSUER" }}"
-auth.oidc.audience = "{{ getenv "FRPS_AUTH_OIDC_AUDIENCE" }}"
+auth.oidc.audience = "{{ getenv "FRPS_AUTH_OIDC_AUDIENCE" "frp" }}"
+{{- end }}

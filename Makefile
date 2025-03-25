@@ -2,8 +2,8 @@
 
 VERSION ?= latest
 
-REPO = wodby/rsyslog
-NAME = rsyslog
+REPO = wodby/frp
+NAME = frp
 
 TAG ?= $(VERSION)
 

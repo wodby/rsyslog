@@ -13,7 +13,7 @@ env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
-  rsyslog-build:
+  frp-build:
     strategy:
       matrix:
         platform:
@@ -42,10 +42,10 @@ jobs:
           make buildx-build
           make test
           make buildx-push
-  rsyslog-push:
+  frp-push:
     runs-on: ubuntu-latest
     needs:
-      - rsyslog-build
+      - frp-build
     steps:
       - uses: actions/checkout@v4
       - uses: docker/login-action@v3
