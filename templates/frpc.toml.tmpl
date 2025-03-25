@@ -1,0 +1,9 @@
+serverAddr = {{ getenv "SERVER_ADDR" }}
+serverPort = {{ getenv "SERVER_PORT" }}
+
+[[proxies]]
+name = "frpc"
+type = "http"
+localIP = "127.0.0.1"
+localPort = 8001
+customDomains = ["{{ getenv "DOMAIN" }}"]
