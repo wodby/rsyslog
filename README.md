@@ -4,6 +4,13 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/rsyslog.svg)](https://hub.docker.com/r/wodby/rsyslog)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/rsyslog.svg)](https://hub.docker.com/r/wodby/rsyslog)
 
+## Image revisions
+
+Use image revision tags such as `wodby/rsyslog:rN` to select a Wodby image revision.
+Image revisions start at `r0` and increase with each release.
+See [release tags](https://github.com/wodby/rsyslog/tags) for available revisions and the [image revision policy](https://github.com/wodby/images#image-revisions) for upgrade guidance.
+Previously published image tags remain available.
+
 ## Supported tags and respective `Dockerfile` links:
 
 - [`latest` (*Dockerfile*)](https://github.com/wodby/rsyslog/tree/master/Dockerfile)
