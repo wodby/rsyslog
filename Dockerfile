@@ -1,6 +1,10 @@
-FROM alpine:3.21
+# check=skip=InvalidDefaultArgInFrom
 
-RUN apk add --no-cache bash rsyslog
+# The Makefile supplies the required digest-pinned BASE_IMAGE argument.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+RUN apk add --no-cache rsyslog
 
 EXPOSE 514
 

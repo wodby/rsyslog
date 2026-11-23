@@ -13,6 +13,10 @@ Previously published image tags remain available.
 
 ## Supported tags and respective `Dockerfile` links:
 
+- `rN` (for example `r1`): image revisions. Each revision is a fixed build; pin one in deployments.
 - [`latest` (*Dockerfile*)](https://github.com/wodby/rsyslog/tree/master/Dockerfile)
+
+Images are built on [`wodby/alpine`](https://github.com/wodby/alpine) 3.24. A new image revision is released when
+`wodby/alpine` publishes a new revision, for example with Alpine package security fixes.
 
 All images built for `linux/amd64` and `linux/arm64`
