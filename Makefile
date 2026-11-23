@@ -2,6 +2,18 @@
 
 VERSION ?= latest
 
+ALPINE_VER ?= 3.24
+
+# CI passes the pinned wodby/alpine revision; local builds default to the floating Alpine line.
+BASE_IMAGE_REVISION ?=
+ifeq ($(BASE_IMAGE_REVISION),)
+    BASE_IMAGE_TAG := $(ALPINE_VER)
+else
+    BASE_IMAGE_TAG := $(ALPINE_VER)-$(BASE_IMAGE_REVISION)
+endif
+
+include base-images.mk
+
 REPO = wodby/rsyslog
 NAME = rsyslog
 
@@ -18,15 +30,15 @@ endif
 default: build
 
 build:
-	docker build -t $(REPO):$(VERSION) ./
+	docker build --build-arg BASE_IMAGE="$(BASE_IMAGE)" -t $(REPO):$(VERSION) ./
 
 buildx-build:
-	docker buildx build --platform $(PLATFORM) -t $(REPO):$(TAG) \
+	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --platform $(PLATFORM) -t $(REPO):$(TAG) \
 		--load \
 		./
 
 buildx-push:
-	docker buildx build --platform $(PLATFORM) --push -t $(REPO):$(TAG) \
+	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --platform $(PLATFORM) --push -t $(REPO):$(TAG) \
 		./
 
 # CI combines the exact architecture images this workflow run pushed; see
@@ -41,7 +53,7 @@ buildx-imagetools-create:
 .PHONY: buildx-imagetools-create
 
 test:
-	echo 'no tests :('
+	./test.sh $(REPO):$(TAG) $(PLATFORM)
 
 push:
 	docker push $(REPO):$(VERSION)
